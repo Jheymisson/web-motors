@@ -13,13 +13,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import Core.BasePageObject;
 import Core.BaseTest;
 import PagesPesquisaCarro.POPesquisarMarca;
-import PagesPesquisaCarro.ResultadosPesquisa;
-import PagesPesquisaCarro.SelecionarModeloDeCarro;
+import PagesPesquisaCarro.POResultadosPesquisa;
+import PagesPesquisaCarro.POSelecionarModeloDeCarro;
 import Utils.Reutilizavel;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
+import io.cucumber.java.pt.Quando;
 
 public class SelecionarModeloDeCarroSteps  {
 
@@ -40,7 +41,7 @@ public class SelecionarModeloDeCarroSteps  {
 			.digitarMarca("HONDA")
 			.selecionarOpcaoDropdownDaPesquisa();
 		String marca =
-		new ResultadosPesquisa(driver)
+		new POResultadosPesquisa(driver)
 			.validarMarcaModelo();
 		assertEquals(marca, "HONDA");
 	}
@@ -49,18 +50,24 @@ public class SelecionarModeloDeCarroSteps  {
 	public void selecionar_modelo_de_um_carro() {
 		new Reutilizavel(driver)
 			.scrollFrame();
-		new SelecionarModeloDeCarro(driver)
+		new POSelecionarModeloDeCarro(driver)
 			.selecionarBotaoModelos()
 			.selecionarOpcaoModelo();
 	}
 
-	@Entao("modelo será selecionado com sucesso")
+	@Quando("modelo for selecionado")
 	public void modelo_será_selecionado_com_sucesso() {
 		String marcaModelo =
-		new ResultadosPesquisa(driver)
+		new POResultadosPesquisa(driver)
 			.validarMarcaModelo();
 		assertEquals(marcaModelo, "HONDA CITY");
 	}
+	
+	@Entao("exportar os anuncios para um arquivo csv")
+	public void exportar_os_anuncios_para_um_arquivo_csv() {
+		new POResultadosPesquisa(driver)
+			.exportaCsvResultado();
+	} 
 	
 	@After
 	public static void paralizacao() {

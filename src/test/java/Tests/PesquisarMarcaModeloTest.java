@@ -15,8 +15,8 @@ import java.util.List;
 
 import Core.BaseTest;
 import PagesPesquisaCarro.POPesquisarMarca;
-import PagesPesquisaCarro.ResultadosPesquisa;
-import PagesPesquisaCarro.SelecionarModeloDeCarro;
+import PagesPesquisaCarro.POResultadosPesquisa;
+import PagesPesquisaCarro.POSelecionarModeloDeCarro;
 import StepDefinitions.SelecionarModeloDeCarroSteps;
 import Utils.Reutilizavel;
 
@@ -40,7 +40,7 @@ class PesquisarMarcaModeloTest extends BaseTest {
 			.digitarMarca("HONDA")
 			.selecionarOpcaoDropdownDaPesquisa();
 		String marcaModelo =
-		new ResultadosPesquisa(driver)
+		new POResultadosPesquisa(driver)
 			.validarMarcaModelo();
 		assertEquals(marcaModelo, "HONDA");
 	}
@@ -49,18 +49,18 @@ class PesquisarMarcaModeloTest extends BaseTest {
 	void TC002_Deve_Selecionar_Modelo() {
 		new Reutilizavel(driver)
 			.scrollFrame();
-		new SelecionarModeloDeCarro(driver)
+		new POSelecionarModeloDeCarro(driver)
 			.selecionarBotaoModelos()
 			.selecionarOpcaoModelo();
 		String marcaModelo =
-		new ResultadosPesquisa(driver)
+		new POResultadosPesquisa(driver)
 			.validarMarcaModelo();
 		assertEquals(marcaModelo, "HONDA CITY");	
 	}
 	
 	@Test
 	void TC003_Deve_Listar_Os_Anuncios_Da_Pagina_Resultados() {
-		new ResultadosPesquisa(driver)
+		new POResultadosPesquisa(driver)
 			.exportaCsvResultado();
 	}
 	

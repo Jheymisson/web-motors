@@ -12,9 +12,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import Core.BasePageObject;
 
-public class ResultadosPesquisa extends BasePageObject {
+public class POResultadosPesquisa extends BasePageObject {
 
-	public ResultadosPesquisa(WebDriver driver) {
+	public POResultadosPesquisa(WebDriver driver) {
 		super(driver);
 	}
 	
@@ -72,7 +72,7 @@ public class ResultadosPesquisa extends BasePageObject {
 		return precos;
 	}
 	
-	public ResultadosPesquisa exportaCsvResultado() {
+	public POResultadosPesquisa exportaCsvResultado() {
 		List<String> listaMarcaModelo = listaDeMarcaModelo();
 		List<String> listaEspecificacoes = listaDeEspecificacoes();
 		List<String> listaPrecos = listaDePreco();

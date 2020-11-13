@@ -33,13 +33,13 @@ public class POPesquisarMarca extends BasePageObject {
 		return this;
 	}
 	
-	public ResultadosPesquisa selecionarOpcaoDropdownDaPesquisa() {
+	public POResultadosPesquisa selecionarOpcaoDropdownDaPesquisa() {
 		boolean modelo = driver.findElement(marca).isDisplayed();
 		if(modelo) {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(selecionarOpcao));
 			driver.findElement(selecionarOpcao).click();
 		}
-		return new ResultadosPesquisa(driver);
+		return new POResultadosPesquisa(driver);
 	}
 	
 }

@@ -7,9 +7,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import Core.BasePageObject;
 import io.cucumber.java.After;
 
-public class SelecionarModeloDeCarro extends BasePageObject {
+public class POSelecionarModeloDeCarro extends BasePageObject {
 
-	public SelecionarModeloDeCarro(WebDriver driver) {
+	public POSelecionarModeloDeCarro(WebDriver driver) {
 		super(driver);
 	}
 
@@ -17,12 +17,12 @@ public class SelecionarModeloDeCarro extends BasePageObject {
 	private By opcaoModelo = By.xpath("//a[text()=\"CITY\"]");
 	
 	
-	public SelecionarModeloDeCarro selecionarBotaoModelos() {
+	public POSelecionarModeloDeCarro selecionarBotaoModelos() {
 		driver.findElement(btnTodosModelos).click();
 		return this;
 	}
 	
-	public SelecionarModeloDeCarro selecionarOpcaoModelo() {
+	public POSelecionarModeloDeCarro selecionarOpcaoModelo() {
 		wait.until(ExpectedConditions.elementToBeClickable(opcaoModelo));
 		driver.findElement(opcaoModelo).click();
 		return this;

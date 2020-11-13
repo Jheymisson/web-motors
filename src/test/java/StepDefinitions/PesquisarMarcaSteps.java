@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 import Core.BaseTest;
 import PagesPesquisaCarro.POPesquisarMarca;
-import PagesPesquisaCarro.ResultadosPesquisa;
+import PagesPesquisaCarro.POResultadosPesquisa;
 import Utils.Reutilizavel;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -57,7 +57,7 @@ public class PesquisarMarcaSteps {
 	@Entao("vai apareccer uma nova tela com resultados obtidos atraves da pesquisa")
 	public void vai_apareccer_uma_nova_tela_com_resultados_obtidos_atraves_da_pesquisa() {
 		String marcaModelo =
-		new ResultadosPesquisa(driver)
+		new POResultadosPesquisa(driver)
 			.validarMarcaModelo();
 		assertEquals(marcaModelo, "HONDA");
 	}
