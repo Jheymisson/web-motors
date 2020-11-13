@@ -15,7 +15,7 @@ public class Reutilizavel extends BasePageObject {
 	}
 
 	private By btnLogoWebMotors = By.id("logoHomeWebmotors");
-	
+	private By btnAceitaCookies = By.xpath("//*[@id=\"root\"]/div[3]/div[2]/button");
 	
 	public Reutilizavel voltarParaHome() {
 		driver.findElement(btnLogoWebMotors).click();
@@ -27,6 +27,14 @@ public class Reutilizavel extends BasePageObject {
 		wait.until(ExpectedConditions.javaScriptThrowsNoExceptions("document.querySelector('div.Search-result.Search-result--container-left .Filters__container__scroll').scrollTop=400"));
 		js.executeScript("document.querySelector('div.Search-result.Search-result--container-left .Filters__container__scroll').scrollTop=400");
 		return this;
+	}
+	
+	public Reutilizavel aceitaCookies() {
+		boolean cookies = driver.findElement(btnAceitaCookies).isDisplayed();
+		if(cookies) {
+			driver.findElement(btnAceitaCookies).click();
+		}
+		return this;	
 	}
 	
 	public String validarTitulo() {

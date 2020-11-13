@@ -11,7 +11,7 @@ public class BaseTest {
 	/*
  	* URL base de onde o sistema deve inicar antes do primeiro caso de teste.
  	*/
-	static String url = "https://www.webmotors.com.br/";
+	static String url = "";
 
     /**
      * Este metodo inicia o navegador do Google Chrome e direciona para inicio do sistema.
@@ -27,7 +27,6 @@ public class BaseTest {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.get(url);
 		return driver;
 	}
 }

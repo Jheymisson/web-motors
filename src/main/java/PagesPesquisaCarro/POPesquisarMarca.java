@@ -6,9 +6,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import Core.BasePageObject;
 
-public class POPesquisarCarro extends BasePageObject {
+public class POPesquisarMarca extends BasePageObject {
 
-	public POPesquisarCarro(WebDriver driver) {
+	public POPesquisarMarca(WebDriver driver) {
 		super(driver);
 	}
 	
@@ -17,18 +17,18 @@ public class POPesquisarCarro extends BasePageObject {
 	private By marca = By.xpath("//div[text()=\"Marcas\"]");
 	private By selecionarOpcao = By.cssSelector("#WhiteBox > div.NavBar > div.NavBar--content > div > div > div > div > div > div:nth-child(1) > a");
 	
-	public POPesquisarCarro selecionarAbaComprarCarros() {
+	public POPesquisarMarca selecionarAbaComprarCarros() {
 		driver.findElement(abaCompraCarro).click();
 		return this;
 	}
 	
-	public POPesquisarCarro digitarModelo(String modelo) {
+	public POPesquisarMarca digitarModelo(String modelo) {
 		driver.findElement(inputPesquisa).click();
 		driver.findElement(inputPesquisa).sendKeys(modelo);
 		return this;
 	}
 	
-	public POPesquisarCarro digitarMarca(String marca) {
+	public POPesquisarMarca digitarMarca(String marca) {
 		driver.findElement(inputPesquisa).sendKeys(marca);
 		return this;
 	}

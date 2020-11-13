@@ -14,8 +14,9 @@ import java.io.FileWriter;
 import java.util.List;
 
 import Core.BaseTest;
-import PagesPesquisaCarro.POPesquisarCarro;
+import PagesPesquisaCarro.POPesquisarMarca;
 import PagesPesquisaCarro.ResultadosPesquisa;
+import StepDefinitions.SelecionarModelodDeCarro;
 import Utils.Reutilizavel;
 
 @TestMethodOrder(MethodOrderer.Alphanumeric.class)
@@ -26,11 +27,14 @@ class PesquisarCarro extends BaseTest {
 	@BeforeAll
 	public static void inicializarNavegador() {
 		driver = BaseTest.abreNavegador();
+		driver.get("https://www.webmotors.com.br/");
+		new Reutilizavel(driver)
+			.aceitaCookies();
 	}
 	
 	@Test
 	void TC001_Deve_Buscar_Carro_Preenchendo_A_Marca() {
-		new POPesquisarCarro(driver)
+		new POPesquisarMarca(driver)
 			.selecionarAbaComprarCarros()
 			.digitarMarca("HONDA")
 			.selecionarOpcaoDropdownDaPesquisa();
@@ -55,11 +59,11 @@ class PesquisarCarro extends BaseTest {
 	
 	@Test
 	void TC003_Deve_Listar_Os_Anuncios_Da_Pagina_Resultados() {
-		ResultadosPesquisa resultados = new ResultadosPesquisa(this.driver);
-		List<String> listaMarcaModelo = resultados.listaDeMarcaModelo();
-		List<String> listaEspecificacoes = resultados.listaDeEspecificacoes();
-		List<String> listaPrecos = resultados.listaDePreco();
-		File f = new File(".\\dados.csv");
+		SelecionarModelodDeCarro selecionarModelodDeCarro = new SelecionarModelodDeCarro(this.driver);
+		List<String> listaMarcaModelo = selecionarModelodDeCarro.listaDeMarcaModelo();
+		List<String> listaEspecificacoes = selecionarModelodDeCarro.listaDeEspecificacoes();
+		List<String> listaPrecos = selecionarModelodDeCarro.listaDePreco();
+		File f = new File(".\\anunciosHondaCity.csv");
 		try {
 			FileWriter fw = new FileWriter(f);
 			fw.write("Marca e Modelo; Especificacoes; Precos");
