@@ -14,6 +14,9 @@ public class Reutilizavel extends BasePageObject {
 		super(driver);
 	}
 
+	public static final String urlHome = "https://www.webmotors.com.br/";
+	public static final String urlEstoque = "https://www.webmotors.com.br/carros/estoque/?IdRevendedor=3834764&TipoVeiculo=carros&anunciante=concession%C3%A1ria%7Cloja";
+
 	private By btnLogoWebMotors = By.id("logoHomeWebmotors");
 	private By btnAceitaCookies = By.xpath("//*[@id=\"root\"]/div[3]/div[2]/button");
 	

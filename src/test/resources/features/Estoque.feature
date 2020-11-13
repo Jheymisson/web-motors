@@ -1,7 +1,8 @@
 # language: pt
-@PesquisaCarro
+@estoque
 Funcionalidade: Verificar estoque
 
+  @estoqueUm
   Cenario: Verificar o estoque e exportar para arquivo csv
     Dado entrar na página de estoque
     E validar a pagina estoque

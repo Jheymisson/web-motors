@@ -1,0 +1,34 @@
+pipeline {
+    agent {
+        docker {
+            image 'jheymix/selenium-java'
+        }
+    }
+
+    stages {
+        stage('Incialização Mvn'){
+            steps {
+                sh 'mvn clean'
+            }
+        }
+        
+        stage('Execução'){
+            steps {
+                sh 'mvn test'
+            }
+        }
+        
+        stage('Conclusão'){
+            steps{
+                echo 'Teste de regressão concluído com sucesso.'
+            }
+        }
+    }
+    
+    post {
+        always {
+            junit 'target/surefire-reports/*.xml'
+        }
+    }
+    
+}

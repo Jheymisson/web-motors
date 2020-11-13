@@ -2,6 +2,7 @@
 @PesquisaCarro
 Funcionalidade: Pesquisa de marca de carros na WebMotors
 
+	@PesquisaMarcaUm
   Cenario: Pesquisar um carro pela marca na página home da Webmotors
     Dado entrar na página home da WebMotors
     E selecionar aba de Comprar Carros

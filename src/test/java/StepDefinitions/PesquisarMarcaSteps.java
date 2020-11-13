@@ -22,7 +22,7 @@ public class PesquisarMarcaSteps {
 	@Before
 	public static void inicializarNavegador() {
 		driver = BaseTest.abreNavegador();
-		driver.get("https://www.webmotors.com.br/");
+		driver.get(Reutilizavel.urlHome);
 		new Reutilizavel(driver)
 			.aceitaCookies();
 	}
