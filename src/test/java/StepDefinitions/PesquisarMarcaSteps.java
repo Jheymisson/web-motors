@@ -61,37 +61,6 @@ public class PesquisarMarcaSteps {
 			.validarMarcaModelo();
 		assertEquals(marcaModelo, "HONDA");
 	}
-
-	@Dado("entrar na página de resultados da pesquisa")
-	public void entrar_na_página_de_resultados_da_pesquisa() {
-		new POPesquisarMarca(driver)
-			.selecionarAbaComprarCarros()
-			.digitarMarca("HONDA")
-			.selecionarOpcaoDropdownDaPesquisa();
-		String marca =
-		new ResultadosPesquisa(driver)
-			.validarMarcaModelo();
-		assertEquals(marca, "HONDA");
-	}
-	
-	@Dado("selecionar modelo de um carro")
-	public void selecionar_modelo_de_um_carro() {
-		new Reutilizavel(driver)
-			.scrollFrame();
-		new ResultadosPesquisa(driver)
-			.selecionarBotaoModelos()
-			.selecionarOpcaoModelo();
-	}
-
-	@Entao("modelo será selecionado com sucesso")
-	public void modelo_será_selecionado_com_sucesso() {
-		String marcaModelo =
-		new ResultadosPesquisa(driver)
-			.validarMarcaModelo();
-		assertEquals(marcaModelo, "HONDA CITY");
-	}
-
-
 	
 	@After
 	public static void paralizacao() {

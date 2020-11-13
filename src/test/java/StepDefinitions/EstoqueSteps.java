@@ -30,7 +30,7 @@ public class EstoqueSteps {
 
 	}
 
-	@Dado("visualizar os anuncios disponiveis")
+	@Dado("validar a pagina estoque")
 	public void visualizar_os_anuncios_disponiveis() {
 
 	}

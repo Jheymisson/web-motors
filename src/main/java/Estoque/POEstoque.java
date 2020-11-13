@@ -1,4 +1,4 @@
-package PagesPesquisaCarro;
+package Estoque;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -12,35 +12,24 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import Core.BasePageObject;
 
-public class ResultadosPesquisa extends BasePageObject {
+public class POEstoque extends BasePageObject {
 
-	public ResultadosPesquisa(WebDriver driver) {
+	public POEstoque(WebDriver driver) {
 		super(driver);
 	}
-	
+
 	//Lista com informacoes do anuncio
 	List<WebElement> listaMarcaModelo = new ArrayList();
 	List<WebElement> listaEspecificacoes = new ArrayList();
 	List<WebElement> listaPrecos = new ArrayList();
 	
-	//Elementos de clique e digitacao
+	//Elementos que compoe a lista dos anuncios
+	private By listaNomeMarcaModelo = By.cssSelector("div.Search-result.Search-result--container-right > div:nth-child(3) > div > div:nth-child(1) > div:nth-child(1) div > div > div:nth-child(2) > a:nth-child(1) > div:nth-child(3) > h2");
+	private By listaEspecificacaoCarro = By.cssSelector("div.Search-result.Search-result--container-right > div:nth-child(3) > div > div:nth-child(1) > div:nth-child(1) div > div > div:nth-child(2) > a:nth-child(1) > div:nth-child(3) > h3");
+	private By listaPrecosCarro = By.cssSelector("div.Search-result.Search-result--container-right > div:nth-child(3) > div > div:nth-child(1) > div:nth-child(1) div > div > div:nth-child(2) > a:nth-child(2) > Strong");
 	
 	//Elementos de retorno de Strings
-	private By nomeMarcaModelo = By.cssSelector("#FilterResultContainer > li:nth-child(2) > a");
-	
-	//Elementos que compoe a lista dos anuncios
-	private By listaNomeMarcaModelo = By.cssSelector("div.Search-result.Search-result--container-right > div:nth-child(4) > div.ContainerCardVehicle > div > div > div div div:nth-child(2) a div h2");
-	private By listaEspecificacaoCarro = By.cssSelector("div.Search-result.Search-result--container-right > div:nth-child(4) > div.ContainerCardVehicle > div > div > div div div:nth-child(2) a div h3");
-	private By listaPrecosCarro = By.cssSelector("div.Search-result.Search-result--container-right > div:nth-child(4) > div.ContainerCardVehicle > div > div > div div div:nth-child(2) a:nth-child(2) > strong");
-	
-	
-	/*
-	 * métodos com retorno de texto ou value
-	 */
-	public String validarMarcaModelo() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(nomeMarcaModelo));
-		return driver.findElement(nomeMarcaModelo).getText();
-	}
+	private By verificaTag = By.cssSelector("#FilterResultContainer > li:nth-child(3) > a");
 	
 	/*
 	 * Métodos que compoe a lista dos anuncios
@@ -72,11 +61,11 @@ public class ResultadosPesquisa extends BasePageObject {
 		return precos;
 	}
 	
-	public ResultadosPesquisa exportaCsvResultado() {
+	public POEstoque exportaCsv() {
 		List<String> listaMarcaModelo = listaDeMarcaModelo();
 		List<String> listaEspecificacoes = listaDeEspecificacoes();
 		List<String> listaPrecos = listaDePreco();
-		File f = new File(".\\anunciosHondaCity.csv");
+		File f = new File(".\\estoqueDaLoja.csv");
 		try {
 			FileWriter fw = new FileWriter(f);
 			fw.write("Marca e Modelo; Especificacoes; Precos");
@@ -98,13 +87,12 @@ public class ResultadosPesquisa extends BasePageObject {
 		return this;
 	}
 	
-//	public ResultadosPesquisa visualizarEstoque() {
-//		if(listaDeAnunciosDeCarros().isEmpty())
-//			System.out.println("Não tem carros no estoque");
-//		else {
-//			System.out.println("Lista de carros no estoque " + listaDeAnunciosDeCarros());
-//		}
-//		return this;
-//	}
 	
+	/*
+	 * métodos com retorno de texto ou value
+	 */
+	public String validarNomeDaTag() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(verificaTag));
+		return driver.findElement(verificaTag).getText();
+	}
 }

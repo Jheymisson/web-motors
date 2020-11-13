@@ -16,11 +16,12 @@ import java.util.List;
 import Core.BaseTest;
 import PagesPesquisaCarro.POPesquisarMarca;
 import PagesPesquisaCarro.ResultadosPesquisa;
-import StepDefinitions.SelecionarModelodDeCarro;
+import PagesPesquisaCarro.SelecionarModeloDeCarro;
+import StepDefinitions.SelecionarModeloDeCarroSteps;
 import Utils.Reutilizavel;
 
 @TestMethodOrder(MethodOrderer.Alphanumeric.class)
-class PesquisarCarro extends BaseTest {
+class PesquisarMarcaModeloTest extends BaseTest {
 
 	private static WebDriver driver;
 	
@@ -48,7 +49,7 @@ class PesquisarCarro extends BaseTest {
 	void TC002_Deve_Selecionar_Modelo() {
 		new Reutilizavel(driver)
 			.scrollFrame();
-		new ResultadosPesquisa(driver)
+		new SelecionarModeloDeCarro(driver)
 			.selecionarBotaoModelos()
 			.selecionarOpcaoModelo();
 		String marcaModelo =
@@ -59,29 +60,8 @@ class PesquisarCarro extends BaseTest {
 	
 	@Test
 	void TC003_Deve_Listar_Os_Anuncios_Da_Pagina_Resultados() {
-		SelecionarModelodDeCarro selecionarModelodDeCarro = new SelecionarModelodDeCarro(this.driver);
-		List<String> listaMarcaModelo = selecionarModelodDeCarro.listaDeMarcaModelo();
-		List<String> listaEspecificacoes = selecionarModelodDeCarro.listaDeEspecificacoes();
-		List<String> listaPrecos = selecionarModelodDeCarro.listaDePreco();
-		File f = new File(".\\anunciosHondaCity.csv");
-		try {
-			FileWriter fw = new FileWriter(f);
-			fw.write("Marca e Modelo; Especificacoes; Precos");
-			fw.write("\n");
-			for(int i=0;i < listaMarcaModelo.size(); i++){
-				String linha = 
-						listaMarcaModelo.get(i) + ";" 
-						+ listaEspecificacoes.get(i) + ";"
-						+ listaPrecos.get(i);
-				fw.write(linha);
-				fw.write("\n");
-			}
-			fw.flush();
-			fw.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Erro ao criar arquivo");
-		}
+		new ResultadosPesquisa(driver)
+			.exportaCsvResultado();
 	}
 	
     /*
