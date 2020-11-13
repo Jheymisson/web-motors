@@ -27,8 +27,8 @@ public class PesquisarMarcaSteps {
 			.aceitaCookies();
 	}
 	
-	@Dado("entrar na página home da WebMotors")
-	public void entrar_na_página_home_da_web_motors() {
+	@Dado("entrar na pagina home da WebMotors")
+	public void entrar_na_pagina_home_da_web_motors() {
 		String tituloPagina =
 		new Reutilizavel(driver)
 			.validarTitulo();
@@ -48,14 +48,14 @@ public class PesquisarMarcaSteps {
 			.digitarMarca("HONDA");
 	}
 
-	@Quando("selecionar opção com a marca preenchida no campo")
-	public void selecionar_opção_com_a_marca_preenchida_no_campo() {
+	@Quando("selecionar opcao com a marca preenchida no campo")
+	public void selecionar_opcao_com_a_marca_preenchida_no_campo() {
 		new POPesquisarMarca(driver)
 			.selecionarOpcaoDropdownDaPesquisa();
 	}
 
-	@Entao("irá apareccer uma nova tela com resultados obtidos através da pesquisa")
-	public void irá_apareccer_uma_nova_tela_com_resultados_obtidos_através_da_pesquisa() {
+	@Entao("vai apareccer uma nova tela com resultados obtidos atraves da pesquisa")
+	public void vai_apareccer_uma_nova_tela_com_resultados_obtidos_atraves_da_pesquisa() {
 		String marcaModelo =
 		new ResultadosPesquisa(driver)
 			.validarMarcaModelo();

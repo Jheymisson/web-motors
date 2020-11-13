@@ -36,14 +36,16 @@ public class EstoqueSteps {
 			.aceitaCookies();
 	}
 	
-	@Dado("entrar na página de estoque")
-	public void entrar_na_página_de_estoque() {
-		String current = driver.getCurrentUrl();
+	@Dado("entrar na pagina de estoque da loja")
+	public void entrar_na_pagina_de_estoque_da_loja() {
+		String current =
+		new POEstoque(driver)
+			.validarUrl();
 		assertEquals(current, Reutilizavel.urlEstoque);
 	}
 
 	@Dado("validar a pagina estoque")
-	public void visualizar_os_anuncios_disponiveis() {
+	public void validar_a_pagina_estoque() {
 		String tagLoja =
 		new POEstoque(driver)
 			.validarNomeDaTag();
@@ -56,18 +58,7 @@ public class EstoqueSteps {
 			.exportaCsv();
 	}
 	
-	@After(order = 1)
-	public static void printScreen(Scenario scenario) {
-		TakesScreenshot foto = (TakesScreenshot) driver;
-		File captura = foto.getScreenshotAs(OutputType.FILE);
-		try {
-			Files.move(captura, new File("src\\test\\resources" + scenario.getName() + "_" + scenario.getStatus() + ".png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	@After(order = 0)
+	@After
 	public static void paralizacao() {
 		driver.quit();
 	}

@@ -1,9 +1,9 @@
 # language: pt
 @estoque
-Funcionalidade: Verificar estoque
+Funcionalidade: Testar o estoque
 
-  @estoqueUm
+  @testeUm
   Cenario: Verificar o estoque e exportar para arquivo csv
-    Dado entrar na página de estoque
+    Dado entrar na pagina de estoque da loja
     E validar a pagina estoque
     Entao exportar os anuncios para um arquivo csv

@@ -95,4 +95,8 @@ public class POEstoque extends BasePageObject {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(verificaTag));
 		return driver.findElement(verificaTag).getText();
 	}
+	
+	public String validarUrl() {
+		return driver.getCurrentUrl();
+	}
 }

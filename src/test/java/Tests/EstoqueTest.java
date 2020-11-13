@@ -33,7 +33,7 @@ public class EstoqueTest extends BaseTest {
 	@BeforeAll
 	public static void inicializarNavegador() {
 		driver = BaseTest.abreNavegador();
-		driver.get(Reutilizavel.urlHome);
+		driver.get(Reutilizavel.urlEstoque);
 		new Reutilizavel(driver)
 			.aceitaCookies();
 	}
@@ -52,19 +52,8 @@ public class EstoqueTest extends BaseTest {
 			.exportaCsv();
 	}
 	
-	@After(order = 1)
-	public static void printScreen(Scenario scenario) {
-		TakesScreenshot foto = (TakesScreenshot) driver;
-		File captura = foto.getScreenshotAs(OutputType.FILE);
-		try {
-			Files.move(captura, new File("src\\test\\resources" + scenario.getName() + "_" + scenario.getStatus() + ".png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
     /*
-     * Metodo criado para finalizar o driver do navegador apï¿½s todos os testes terem sidos executadas.
+     * Metodo criado para finalizar o driver do navegador apos a execucao dos testes
     */
 	@AfterAll
 	public static void paralizacao() {
